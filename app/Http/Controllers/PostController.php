@@ -36,5 +36,9 @@ public function store(Request $request)
 
     return redirect('/posts');
 }
+public function __construct()
+{
+    $this->middleware('auth')->only(['create', 'store']);
+}
     
 }
