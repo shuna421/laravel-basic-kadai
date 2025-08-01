@@ -17,5 +17,24 @@ class PostController extends Controller
     $post = Post::findOrFail($id); // Eloquent ORM を使って取得
     return view('posts.show', compact('post'));
 }
+public function create()
+{
+    return view('posts.create');
+}
+
+public function store(Request $request)
+{
+    $validated = $request->validate([
+        'title' => 'required|max:20',
+        'content' => 'required|max:200',
+    ]);
+
+    $post = new Post();
+    $post->title = $validated['title'];
+    $post->content  = $validated['content']; // カラム名がbodyならここ注意
+    $post->save();
+
+    return redirect('/posts');
+}
     
 }
