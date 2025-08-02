@@ -13,6 +13,7 @@
                 <strong>{{ $post->title }}</strong><br>
                 {{ $post->content }}
             </li>
+            
         @endforeach
     </ul>
 </body>

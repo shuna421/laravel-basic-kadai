@@ -7,6 +7,7 @@
 <body>
     <h1>{{ $post->title }}</h1>
     <p>{{ $post->body }}</p>
+    
     <ul>
         <li>ID: {{ $post->id }}</li>
         <li>作成日: {{ $post->created_at }}</li>

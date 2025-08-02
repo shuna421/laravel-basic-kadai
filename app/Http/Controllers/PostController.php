@@ -9,9 +9,11 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = DB::table('posts')->get();
-        return view('posts.index', ['posts' => $posts]);
-    }
+        // updated_atカラムを昇順（古い順）で取得
+    $posts = \App\Models\Post::orderBy('updated_at', 'asc')->get();
+
+    return view('posts.index', ['posts' => $posts]);
+}
     public function show($id)
 {
     $post = Post::findOrFail($id); // Eloquent ORM を使って取得
